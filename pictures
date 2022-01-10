@@ -1,0 +1,15 @@
+H,W,Y,X=[int(x) for x in input().split()]
+wall=[]
+for i in range(H):
+    line=[int(x) for x in input().split()]
+    wall.append(line)
+flaga=False
+for i in range(0,H-Y+1):
+    for j in range(0,W-X+1):
+        flaga2=True
+        for h in range(i,Y+i):
+            for k in range(j,X+j):
+                if(wall[h][k]!=0): flaga2=False
+        if(flaga2==True): flaga=True
+print(flaga)
+            
