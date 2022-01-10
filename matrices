@@ -1,0 +1,31 @@
+import sys
+n=int(input())
+matryca1=[]
+matryca2=[]
+for i in range(n):
+    linia=input().split()
+    matryca1.append(linia)
+for i in range(n-1):
+    linia=input().split()
+    matryca2.append(linia)
+for i in range(n):
+    for j in range(n):
+        nowamatryca=list(matryca1)
+        del nowamatryca[i]
+        matrycakolumna=[]
+        for h in range(n):
+            kolumna=[]
+            for k in range(n-1):
+                kolumna.append(nowamatryca[k][h])
+            matrycakolumna.append(kolumna)
+        del matrycakolumna[j]
+        matrycapowstala=[]
+        for h in range(n-1):
+            wiersz=[]
+            for k in range(n-1):
+                wiersz.append(matrycakolumna[k][h])
+            matrycapowstala.append(wiersz)
+        if(matrycapowstala==matryca2):
+            print("True")
+            sys.exit()
+print("False")
