@@ -1,0 +1,21 @@
+n=int(input())
+chess=[]
+iplace=[]
+jplace=[]
+count=0
+possiblemoves=0
+for i in range(n):
+    chess.append(input())
+for i in range(n):
+    for j in range(n):
+        if(chess[i][j]=='s'):
+            iplace.append(i)
+            jplace.append(j)
+            count=count+1
+for i in range(count):
+    for j in range(count):
+        if(abs(iplace[i]-iplace[j])==1 and abs(jplace[i]-jplace[j])==2):
+            possiblemoves=possiblemoves+1
+        if(abs(iplace[i]-iplace[j])==2 and abs(jplace[i]-jplace[j])==1):
+            possiblemoves=possiblemoves+1
+print(possiblemoves)
