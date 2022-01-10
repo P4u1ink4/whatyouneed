@@ -1,0 +1,46 @@
+n,m=[int(x) for x in input().split()]
+matrix1=[]
+matrix2=[]
+flaga=False
+for i in range(n):
+    line=[int(x) for x in input().split()]
+    matrix1.append(line)
+for i in range(n):
+    line=[int(x) for x in input().split()]
+    matrix2.append(line)
+for i in range(n):
+    newmatrix=matrix1
+    for h in range(m):
+        first=matrix1[i][0]
+        for j in range(m):
+            if(j+1>m-1):
+                newmatrix[i][j]=first
+            else:
+                newmatrix[i][j]=matrix1[i][j+1]
+        if(newmatrix==matrix2):
+            flaga=True
+newmatrix=[]
+newmatrix2=[]
+for i in range(m):
+    line=[]
+    for j in range(n): 
+        line.append(matrix1[j][i])
+    newmatrix.append(line)
+for i in range(m):
+    line=[]
+    for j in range(n): 
+        line.append(matrix2[j][i])
+    newmatrix2.append(line)
+for i in range(m):
+    newnewmatrix=newmatrix
+    for h in range(n):
+        first=newmatrix[i][0]
+        for j in range(n):
+            if(j+1>n-1):
+                newnewmatrix[i][j]=first
+            else:
+                newnewmatrix[i][j]=newmatrix[i][j+1]
+        if(newnewmatrix==newmatrix2):
+            flaga=True
+if(flaga==True): print("TAK")   
+else: print("NIE")
