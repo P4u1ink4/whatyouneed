@@ -1,0 +1,23 @@
+n=input()
+numbers=[]
+for i in range(len(n)):
+    number=""
+    for j in range(i,len(n)):
+        number=number+n[j]
+        if number not in numbers and number[0]!='0':
+                numbers.append(number)
+numbers=[int(x) for x in numbers]
+primes=[]
+count=0
+for i in numbers:
+    d=0
+    if(i>1):
+        for j in range(2,i):
+            if(i%j==0): d=d+1
+        if(d==0):
+            primes.append(i)
+            count=count+1
+primes=[str(x) for x in primes]
+primes.sort()
+for i in range(count):
+    print(primes[count-1-i])
