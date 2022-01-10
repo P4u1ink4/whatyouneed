@@ -1,0 +1,29 @@
+n=int(input())
+matrix1=[]
+matrix2=[]
+flaga=False
+for i in range(n):
+    line=[int(s) for s in input().split()]
+    matrix1.append(line)
+for i in range(n):
+    line=[int(s) for s in input().split()]
+    matrix2.append(line)
+for a in range(n):
+    for b in range(n):
+        for c in range(n):
+            for d in range(n):
+                for e in range(a,b+1):
+                    for f in range(c,d+1):
+                        if(matrix1[e][f]==0):
+                            matrix1[e][f]=1
+                        else:
+                            matrix1[e][f]=0
+                        if(matrix1==matrix2): flaga=True
+                for e in range(a,b+1):
+                    for f in range(c,d+1):
+                        if(matrix1[e][f]==0):
+                            matrix1[e][f]=1
+                        else:
+                            matrix1[e][f]=0
+if(flaga==True): print("TAK")
+else: print("NIE")
