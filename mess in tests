@@ -1,0 +1,58 @@
+n,m=[int(x) for x in input().split()]
+names=[]
+average={}
+count1={}
+results=[]
+for i in range(n):
+    line=input().split()
+    names.append(line)
+    average[line[0]]=1
+    count1[line[0]]=0
+k=int(input())
+for i in range(k):
+    line=input().split()
+    for h in range(n):
+        name=""
+        if(line[0]==names[h][1]):
+            line[0]=names[h][0]
+            break
+        name='inf'+names[h][1]
+        if(line[0]==name):
+            line[0]=names[h][0]
+            break
+    if(len(line)>2):
+        punkty=line[2].split("/")
+        point=int(punkty[0])/int(punkty[1])
+        if(point<0.5):
+            count1[line[0]]=count1[line[0]]+2
+        elif(point<0.7):
+            count1[line[0]]=count1[line[0]]+3
+        elif(point<0.9):
+            count1[line[0]]=count1[line[0]]+4
+        else:
+            count1[line[0]]=count1[line[0]]+5
+    else:
+        punkty=line[1].split("/")
+        point=int(punkty[0])/int(punkty[1])
+        if(point<0.5):
+            count1[line[0]]=count1[line[0]]+2
+        elif(point<0.7):
+            count1[line[0]]=count1[line[0]]+3
+        elif(point<0.9):
+            count1[line[0]]=count1[line[0]]+4
+        else:
+            count1[line[0]]=count1[line[0]]+5
+for i in average:
+    average[i]=count1[i]/m
+    if(average[i]<3):
+        line=[i,2]
+    elif(average[i]<3.5):
+        line=[i,3]
+    elif(average[i]<4.5):
+        line=[i,4]
+    else:
+        line=[i,5]
+    results.append(line)
+results.sort(key=lambda x: x[0])
+for el in results:
+    print(el[0],el[1])
