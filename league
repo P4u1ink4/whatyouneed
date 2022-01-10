@@ -1,0 +1,23 @@
+n,m,t=[int(x) for x in input().split()]
+cm={}
+vm={}
+for i in range(n):
+    name=input()
+    cm[name]=n-1
+    vm[name]=0
+for i in range(m):
+    match=input().split(":")
+    cm[match[0]]=cm[match[0]]-1
+    cm[match[1]]=cm[match[1]]-1
+    if(int(match[2])>int(match[3])):
+        vm[match[0]]=vm[match[0]]+1
+    else:
+        vm[match[1]]=vm[match[1]]+1
+pv=[]
+for el in cm:
+    if((cm[el]+vm[el])>=t):
+        pv.append(el)
+pv.sort()
+for el in pv:
+    print(el)
+
