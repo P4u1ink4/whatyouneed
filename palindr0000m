@@ -1,0 +1,24 @@
+n=input()
+slowa=[]
+licz=0
+for i in range(len(n)):               
+    k=0
+    for j in range(len(n)-i):
+        slowo=""
+        for h in range(k,k+i+1):    
+            slowo=slowo+n[h]
+        k=k+1
+        slowa.append(slowo)
+def czypalindrom(slowo):
+    if(slowo[0]=='0'): return False
+    for i in range(len(slowo)-1,0,-1):
+        noweslowo=""
+        if(slowo[i]=="0"):
+            for j in range(len(slowo)-1):
+                noweslowo=noweslowo+slowo[j]
+            slowo=noweslowo
+        else: return slowo==slowo[::-1]
+    return slowo==slowo[::-1]
+for el in slowa:
+    if(czypalindrom(el)==True): licz=licz+1
+print(licz)
