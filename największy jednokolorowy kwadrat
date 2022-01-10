@@ -1,0 +1,24 @@
+n=int(input())
+matrix=[]
+results=[]
+maks=0
+for i in range(n):
+    matrix.append(input().split())
+for i in range(n):
+    for j in range(n):
+        for x in range(n):
+            if(i+x+1>n or j+x+1>n): break
+            flaga=True
+            first=matrix[i][j]
+            for h in range(i,i+x+1):
+                for k in range(j,j+x+1):
+                    if(matrix[h][k]!=first): flaga=False
+            if(flaga==True): 
+                if(x+1>=maks): 
+                    maks=x+1
+                    results.append([first,maks])
+result=[]
+for i in results:
+    if(i[1]==maks): result.append(i)
+result.sort(key=lambda x:x[0])
+print(result[0][1], result[0][0])
