@@ -1,0 +1,45 @@
+wartosci,wartoscj=[int(i) for i in input().split()]
+matryca=[]
+for i in range(wartosci):
+    linia=[int(j) for j in input().split()]
+    matryca.append(linia)
+sumy=[]
+if(wartoscj<=wartosci):
+    for i in range(wartoscj):
+        suma1=0
+        suma2=0
+        for j in range(wartoscj):
+            if(j+i==wartoscj): break
+            suma1=matryca[j][j+i]+suma1
+            suma2=matryca[j][wartoscj-1-j-i]+suma2
+        sumy.append(suma1)
+        sumy.append(suma2)
+    for i in range(wartosci):
+        suma1=0
+        suma2=0
+        for j in range(wartoscj):
+            if(j+i==wartosci): break
+            suma1=matryca[j+i][j]+suma1
+            suma2=matryca[j+i][wartoscj-1-j]+suma2
+        sumy.append(suma1)
+        sumy.append(suma2)
+else:
+    for i in range(wartoscj):
+        suma1=0
+        suma2=0
+        for j in range(wartosci):
+            if(j+i==wartoscj): break
+            suma1=matryca[j][j+i]+suma1
+            suma2=matryca[j][wartoscj-1-j-i]+suma2
+        sumy.append(suma1)
+        sumy.append(suma2)
+    for i in range(wartosci):
+        suma1=0
+        suma2=0
+        for j in range(wartosci):
+            if(j+i==wartosci): break
+            suma1=matryca[j+i][j]+suma1
+            suma2=matryca[j+i][wartoscj-1-j]+suma2
+        sumy.append(suma1)
+        sumy.append(suma2)
+print(max(sumy))
