@@ -1,0 +1,32 @@
+n=int(input())
+lines=[]
+instrumenty=[]
+for i in range(n):
+    line=input().split()
+    lines.append(line)
+for i in lines:
+    words={}
+    for j in lines:
+        if(i!=j):
+            if((i[0] in j and i[1] in j) or (i[0] in j and i[2] in j) or (i[2] in j and i[1] in j)):
+                for h in range(3):
+                    if(i[h] in words):
+                        words[i[h]]=words[i[h]]+1
+                    else:
+                        words[i[h]]=1
+                    if(j[h] in words):
+                        words[j[h]]=words[j[h]]+1
+                    else:
+                        words[j[h]]=1
+    maks=0
+    for g in words:
+        if(words[g]>maks): maks=words[g]
+    for g in words:
+        if(words[g]<maks):
+            if(g in instrumenty): continue
+            else:             
+                instrumenty.append(g)
+instrumenty.sort()
+for el in instrumenty:
+    print(el)
+                    
