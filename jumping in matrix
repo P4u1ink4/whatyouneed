@@ -1,0 +1,27 @@
+n=int(input())
+pozycjai,pozycjaj=[int(x) for x in input().split()]
+wiersze=[]
+for i in range(n):
+    linia=[int(x) for x in input().split()]
+    wiersze.append(linia)
+kolumny=[]
+for i in range(n):
+    kolumna=[]
+    for j in range(n):
+        kolumna.append(wiersze[j][i])
+    kolumny.append(kolumna)
+poczatek=wiersze[pozycjai][pozycjaj]
+for i in range(n):
+    if(i%2==0):
+        nastepny=min(wiersze[pozycjai])
+        for j in range(n):
+            if(wiersze[pozycjai][j]==nastepny):
+                pozycjaj=j
+                break
+    else:
+        nastepny=min(kolumny[pozycjaj])
+        for j in range(n):
+            if(kolumny[pozycjaj][j]==nastepny):
+                pozycjai=j
+                break
+print(pozycjai, pozycjaj)
