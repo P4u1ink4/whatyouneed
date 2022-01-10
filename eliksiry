@@ -1,0 +1,34 @@
+n=int(input())
+drinks=[]
+for i in range(n):
+    line=input().split()
+    line[1]=float(line[1]);line[2]=float(line[2]);line[3]=float(line[3])
+    line.append(line[3]-line[2]-line[1])
+    drinks.append(line)
+m=int(input())
+for i in range(m):
+    operation=input().split()
+    for j in range(n):
+        if(drinks[j][0]==operation[1]):
+            for h in range(n):
+                if(drinks[h][0]==operation[0]):
+                    sum=drinks[h][1]+drinks[h][2]
+                    if(sum==0 or drinks[j][4]==0): continue
+                    div=drinks[j][4]/sum
+                    if(sum<=drinks[j][4]):
+                        drinks[j][1]+=drinks[h][1]
+                        drinks[j][2]+=drinks[h][2]
+                        drinks[h][1]=0
+                        drinks[h][2]=0
+                    else:
+                        drinks[j][1]+=drinks[h][1]*div
+                        drinks[j][2]+=drinks[h][2]*div
+                        drinks[h][1]-=drinks[h][1]*div
+                        drinks[h][2]-=drinks[h][2]*div
+                    drinks[j][4]=drinks[j][3]-drinks[j][2]-drinks[j][1]
+                    drinks[h][4]=drinks[h][3]-drinks[h][2]-drinks[h][1]
+                continue
+drinks.sort(key=lambda x: x[0] )
+for i in range(n):
+    print(round(drinks[i][1],3))
+    
