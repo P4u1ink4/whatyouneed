@@ -1,0 +1,44 @@
+n=int(input())
+matrix=[]
+spiral=[]
+for i in range(n):
+    line=[int(x) for x in input().split()]
+    matrix.append(line)
+for i in range(n):
+    spiral.append(matrix[0][i])
+h=n-1
+k=1
+l=n-1
+m=n-2
+q=n-2
+p=0
+r=1
+s=1
+o=1
+for i in range((n-1)*2):
+    if(i%4==0):
+        for j in range(n-o):
+            spiral.append(matrix[k+j][h])
+        h=h-1
+        k=k+1
+    if(i%4==1):
+        for j in range(n-o):
+            spiral.append(matrix[l][m-j])
+        l=l-1
+        m=m-1
+    if(i%4==2):
+        for j in range(n-o):
+            spiral.append(matrix[q-j][p])
+        q=q-1
+        p=p+1
+    if(i%4==3):
+        for j in range(n-o):
+            spiral.append(matrix[r][s+j])
+        r=r+1
+        s=s+1
+    if(i%2!=0): 
+        o=o+1
+for i in range(n*n):
+    print(spiral[i],end=" ")
+
+        
