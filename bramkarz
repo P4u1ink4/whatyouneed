@@ -1,0 +1,18 @@
+names=input().split()
+n=int(input())
+podania=[]
+bramkarze=[]
+for i in range(n):
+    line=input().split()
+    podania.append(line)
+gole=input().split()
+for i in range(n):
+    for j in range(n):
+        if(i!=j):
+            if(podania[i][1]==podania[j][0]):
+                if(int(podania[i][2])!=0 and int(podania[j][2])!=0):
+                    if(podania[j][1] in gole): 
+                        if(podania[i][0] not in bramkarze): bramkarze.append(podania[i][0])
+bramkarze.sort()
+for el in bramkarze:
+    print(el)
