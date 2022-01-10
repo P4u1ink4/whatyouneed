@@ -1,0 +1,33 @@
+n=int(input())
+ilosc=0
+wektory=[]
+for i in range(n):
+    linia=input().split()
+    wektory.append(linia)
+for i in range(n):
+    kolumna=[]
+    for j in range(n):
+        kolumna.append(wektory[j][i])
+    wektory.append(kolumna)
+for i in range(0,2*n-1):
+    for j in range(i+1,2*n):
+        flaga=True
+        wektor1=[int(x) for x in wektory[i]]
+        wektor2=[int(x) for x in wektory[j]]
+        if(sum(wektor1)==0 or sum(wektor2)==0): 
+            if(sum(wektor1)==0 and sum(wektor2)==0): flaga=True
+            else: flaga=False
+        else:
+            for h in range(n):
+                if(wektor2[h]!=0):
+                    wartosc=h
+                    break
+            if(wektor1[wartosc]==0): flaga=False
+            else:
+                for h in range(n):
+                    if((wektor2[h]*wektor1[wartosc])/wektor2[wartosc]!=wektor1[h]): flaga=False
+        if(flaga==True):
+            ilosc=ilosc+1
+print(ilosc)
+        
+
