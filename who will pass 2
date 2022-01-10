@@ -1,0 +1,32 @@
+n=int(input())
+matrix=[]
+matrix2=[]
+for i in range(n):
+    line=[int(x) for x in input().split()]
+    matrix.append(line)
+for i in range(n):
+    for j in range(n):
+        sum=0
+        counts=0
+        if(matrix[i][j]>=7):
+            matrix2.append(1)
+        else:
+            for h in range(n):
+                if(matrix[i][h]>=matrix[i][j]):
+                    sum=sum+matrix[i][h]
+                    counts=counts+1
+                if(matrix[h][j]>=matrix[i][j] and i!=h):
+                    sum=sum+matrix[h][j]
+                    counts=counts+1
+            if(counts!=0): average=sum/counts
+            if(average>=7):
+                matrix2.append(1)
+            else:
+                matrix2.append(0)
+h=0
+for i in range(n):
+    for j in range(n):
+        print(matrix2[h],end=" ")
+        h=h+1
+    print()
+            
