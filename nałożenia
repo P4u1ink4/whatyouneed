@@ -1,0 +1,25 @@
+n=int(input())
+words=[]
+for i in range(n):
+    words.append(input())
+results=[]
+maks=0
+for i in range(n):
+    for j in range(n):
+        if(i!=j):
+            x=len(words[i])
+            for h in range(x-1,-1,-1):
+                if(words[i]!=words[j]):
+                    if(words[i][h:x] in words[j][0:len(words[i][h:x])]):
+                        results.append([len(words[i][h:x]),words[i],words[j]])
+                        if(len(words[i][h:x])>maks): maks=len(words[i][h:x])
+finalresults=[]
+for i in results:
+    if(i[0]!=maks): finalresults.append(i)
+finalresults.sort(key=lambda x: x[2], reverse=True)
+finalresults.sort(key=lambda x: x[1])
+finalresults.sort(key=lambda x: x[0],reverse=True)
+if(finalresults==[]): print("BRAK")
+else: 
+    for el in finalresults[0]:
+        print(el)
